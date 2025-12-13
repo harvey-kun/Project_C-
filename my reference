@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+void optionOne() {
+    int subChoice = 0;
+    while (subChoice != 1) {
+        system("clear");
+        cout << "=== OPTION ONE ===\n";
+        cout << "1. Return to Main Menu\n";
+        cout << "2. Do something in Option One\n";
+        cout << "Enter choice: ";
+        cin >> subChoice;
+
+        if (subChoice == 2) {
+            cout << "Doing something in Option One...\n";
+            cout << "Enter 1 to return: ";
+            cin >> subChoice;
+        }
+    }
+}
+
+void optionTwo() {
+    int subChoice = 0;
+    while (subChoice != 1) {
+        system("clear");
+        cout << "=== OPTION TWO ===\n";
+        cout << "1. Return to Main Menu\n";
+        cout << "2. Do something in Option Two\n";
+        cout << "Enter choice: ";
+        cin >> subChoice;
+
+        if (subChoice == 2) {
+            cout << "Doing something in Option Two...\n";
+            cout << "Enter 1 to return: ";
+            cin >> subChoice;
+        }
+    }
+}
+
+void optionThree() {
+    int subChoice = 0;
+    while (subChoice != 1) {
+        system("clear");
+        cout << "=== OPTION THREE ===\n";
+        cout << "1. Return to Main Menu\n";
+        cout << "2. Do something in Option Three\n";
+        cout << "Enter choice: ";
+        cin >> subChoice;
+
+        if (subChoice == 2) {
+            cout << "Doing something in Option Three...\n";
+            cout << "Enter 1 to return: ";
+            cin >> subChoice;
+        }
+    }
+}
+
+int main() {
+    int choice = 0;
+    while (choice != 4) {
+        system("clear");
+        cout << "=== MAIN MENU ===\n";
+        cout << "1. Log in\n";
+        cout << "2. Create Account\n";
+        cout << "3. Option Three\n";
+        cout << "4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1)optionOne();
+        else if (choice == 2) optionTwo();
+        else if (choice == 3) optionThree();
+        else if (choice == 4) cout << "Exiting...\n";
+        else cout << "Invalid choice. Try again.\n";
+    }
+
+    return 0;
+}
