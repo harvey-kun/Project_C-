@@ -2,6 +2,12 @@
 #include <iomanip>
 using namespace std;
 
+//For input errors
+void clearInput(){
+    cin.clear();
+    cin.ignore(10000, '\n');
+}
+
 
 //CLI
 void header(const string title) {
@@ -12,23 +18,22 @@ void header(const string title) {
 
 
 //Sub choices 1
-void mainMenuUI() {
-    cout << setw(20) << "[1]  Customer\n";
-    cout << setw(20) << "[2]  Owner\n";
-    cout << setw(20) << "[3]  Exit\n";
+void mainMenuUI(){
+    cout << setw(26) <<"[1]  "<< "Customer\n";
+    cout << setw(26) <<"[2]  "<< "Owner\n";
+    cout << setw(26) <<"[3]  "<< "Exit\n";
 }
 //Sub choices 2
-void ownerMenuUI() {
-    cout << setw(20) << "[1]  Return to Main Menu\n";
-    cout << setw(20) << "[2]  Set Working Days\n";
-    cout << setw(20) << "[3]  View Available Dates\n";
+void ownerMenuUI(){
+    cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
+    cout << setw(26) <<"[2]  "<< "Set Working Days\n";
+    cout << setw(26) <<"[3]  "<< "View Available Dates\n";
 }
 //Sub choices 3
 void customerMenuUI() {
-    cout << setw(20) << "[1]  Return to Main Menu\n";
-    cout << setw(20) << "[2]  Make Reservation\n";
+    cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
+    cout << setw(26) <<"[2]  "<< "Make Reservation\n";
 }
-
 
 //Owner CLI
 void ownerMenu() {
@@ -81,13 +86,17 @@ void customerMenu() {
 int main() {
     int choice = 0;
 
-    while (choice != 3) {
+    while (choice != 3){
         system("clear");
         header("VEHICLE SERVICE RESERVATION SYSTEM");
         mainMenuUI();
 
         cout << "\nEnter choice: ";
-        cin >> choice;
+
+        if (!(cin >> choice)){
+            clearInput();
+            choice = 0;
+        }
 
         if (choice == 1) customerMenu();
         else if (choice == 2) ownerMenu();
