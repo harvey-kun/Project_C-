@@ -45,7 +45,12 @@ void ownerMenu() {
         ownerMenuUI();
 
         cout << "\nEnter choice: ";
-        cin >> choice;
+
+        //for invalid user input
+        if (!(cin >> choice)){
+            clearInput();
+            choice = 0;
+        }
 
         if (choice == 2) {
             cout << "\nSetting working days...\n";
@@ -72,7 +77,12 @@ void customerMenu() {
         customerMenuUI();
 
         cout << "\nEnter choice: ";
-        cin >> choice;
+
+        //for invalid user input
+        if (!(cin >> choice)){
+            clearInput();
+            choice = 0;
+        }
 
         if (choice == 2) {
             cout << "\nMaking reservation...\n";
@@ -93,14 +103,22 @@ int main() {
 
         cout << "\nEnter choice: ";
 
+        //for invalid user input
         if (!(cin >> choice)){
             clearInput();
             choice = 0;
         }
 
-        if (choice == 1) customerMenu();
-        else if (choice == 2) ownerMenu();
-        else if (choice == 3) cout << "Exiting...\n";
+        if(choice == 1){
+            customerMenu();
+        }
+        else if (choice == 2){
+            ownerMenu();
+        }
+        else if (choice == 3){
+            system("clear");
+            cout << "Exiting...\n";
+        }
     }
 
     return 0;
