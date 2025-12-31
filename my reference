@@ -3,8 +3,12 @@
 using namespace std;
 
 //For "GLOBAL VARIABLES and ARRAYS"
+    //Arrays
+string ownerCreds[2] = {"admin", "admin"};
 
 
+    //Variables
+bool firstLogin = 1;
 //End for "GLOBAL"
 
 
@@ -42,6 +46,36 @@ void customerMenuUI() {
 }
 
 //Owner CLI
+bool ownerLogin(){
+    string user, pass;
+
+    system("clear");
+    header("OWNER LOGIN");
+
+    if (firstLogin){
+        cout << "Default Login Credentials:\n";
+        cout << "Username: admin\n";
+        cout << "Password: admin\n\n";
+    }
+
+    cout << "Enter Username: ";
+    cin >> user;
+    cout << "Enter Password: ";
+    cin >> pass;
+
+    if (user == ownerCreds[0] && pass == ownerCreds[1]){
+        firstLogin = false;
+        return true;
+    }
+
+    cout << "\nInvalid username or password.\n";
+    cout << "Press enter to return...";
+    cin.ignore();
+    cin.get();
+    return false;
+}
+
+
 void ownerMenu() {
     int choice = 0;
 
@@ -58,7 +92,7 @@ void ownerMenu() {
             choice = 0;
         }
 
-        if (choice == 2) {
+         else if (choice == 2) {
             cout << "\nSetting working days...\n";
             cout << "Enter 1 to return: ";
             cin >> choice;
@@ -71,6 +105,8 @@ void ownerMenu() {
         }
     }
 }
+
+
 
 
 //Customer CLI
