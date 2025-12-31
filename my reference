@@ -2,6 +2,12 @@
 #include <iomanip>
 using namespace std;
 
+//For "GLOBAL VARIABLES and ARRAYS"
+
+
+//End for "GLOBAL"
+
+
 //For input errors
 void clearInput(){
     cin.clear();
@@ -9,7 +15,7 @@ void clearInput(){
 }
 
 
-//CLI
+//CLI Title
 void header(const string title) {
     cout << "============================================================\n";
     cout << setw(47) << title << endl;
@@ -17,19 +23,19 @@ void header(const string title) {
 }
 
 
-//Sub choices 1
+//CLI Sub choices 1
 void mainMenuUI(){
     cout << setw(26) <<"[1]  "<< "Customer\n";
     cout << setw(26) <<"[2]  "<< "Owner\n";
     cout << setw(26) <<"[3]  "<< "Exit\n";
 }
-//Sub choices 2
+//CLI Sub choices 2
 void ownerMenuUI(){
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
     cout << setw(26) <<"[2]  "<< "Set Working Days\n";
     cout << setw(26) <<"[3]  "<< "View Available Dates\n";
 }
-//Sub choices 3
+//CLI Sub choices 3
 void customerMenuUI() {
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
     cout << setw(26) <<"[2]  "<< "Make Reservation\n";
