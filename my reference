@@ -22,7 +22,7 @@ void clearInput(){
 
 void displayDates() {
     cout << "Available dates are:\n";
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++) {  // Changed to i < 7 to include Sunday
         cout << "[" << i + 1 << "] " << dates[i];
         if (isBusy[i]) {
             cout << "\tBusy";
@@ -214,7 +214,9 @@ int main() {
             customerMenu();
         }
         else if (choice == 2){
-            ownerMenu();
+            if (ownerLogin()){
+                ownerMenu();
+            }
         }
         else if (choice == 3){
             system("clear");
