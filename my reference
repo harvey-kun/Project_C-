@@ -23,9 +23,9 @@ void clearInput(){
 void displayDates() {
     cout << "Available dates are:\n";
     for (int i = 0; i < 7; i++) {  // Changed to i < 7 to include Sunday
-        cout << "[" << i + 1 << "] " << dates[i];
+        cout << setw(16) << "[" << i + 1 << "] " << dates[i];
         if (isBusy[i]) {
-            cout << "\tBusy";
+            cout << "\t\tBusy";
         }
         cout << endl;
     }
@@ -55,6 +55,25 @@ void ownerMenuUI(){
 void makeReservation() {
     int pick;
     bool reserved = false;
+
+    // Check if all days are busy
+    bool allBusy = true;
+    for (int i = 0; i < 7; i++) {
+        if (!isBusy[i]) {
+            allBusy = false;
+            break;
+        }
+    }
+    if (allBusy) {
+        system("clear");
+        header("MAKE RESERVATION");
+        displayDates();
+        cout << "\nThe week schedule is full. Try again next week.\n";
+        cout << "Press enter to continue...";
+        cin.ignore();
+        cin.get();
+        return;  // Exit the function
+    }
 
     while (!reserved) {
         system("clear");
@@ -88,7 +107,6 @@ void makeReservation() {
         }
     }
 }
-
 
 
 //CLI Sub choices 3
@@ -159,8 +177,6 @@ void ownerMenu() {
 }
 
 
-
-
 //Customer CLI
 void customerMenu() {
     int choice = 0;
@@ -187,7 +203,7 @@ void customerMenu() {
 
 
 
-//First CLI
+//Main---------------------------------------------------------------------------------------------------------
 int main() {
     int choice = 0;
 
