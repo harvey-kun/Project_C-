@@ -12,8 +12,9 @@
 
 
 
-   - Prevents double-booking of dates Select.
-   - Handles invalid input safely
+- Prevents double-booking of dates Select.
+- Handles invalid input safely.
+
 
 ## Owner Panel (Login Required)
 
