@@ -18,10 +18,26 @@
 
 ## Owner Panel (Login Required)
 
-Secure owner login using global credentials
+   - Secure owner login using global credentials.
+   - View all reservations for the week.
+   - See customer name, vehicle type, and reported problem per date.
+   - Default credentials shown only on first login.
 
-View all reservations for the week
 
-See customer name, vehicle type, and reported problem per date
+## System Design
 
-Default credentials shown only on first login
+ - Uses global arrays to store:
+     - Reservation dates.
+     - Availability status.
+     - Customer details.
+     - Vehicle information
+
+   - Implements menu loops to prevent crashes from invalid input.
+   - Clear CLI layout using iomanip for alignment.
+   - Modular function-based structure for readability and maintenance.
+   - Input validation to prevent infinite loops and crashes.
+
+
+
+
+
