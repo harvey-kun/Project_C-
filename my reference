@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 using namespace std;
 
 //For "GLOBAL VARIABLES and ARRAYS"
@@ -8,8 +9,21 @@ string ownerCreds[2] = {"admin", "admin"};
 string dates[7] = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 bool isBusy[7] = {false,false,false,false,false,false,false};
 
-    //Variables
+    // Customer info arrays (one per date)
+string customerNames[7] = {"","","","","","",""};
+string vehicleTypes[7] = {"","","","","","",""};
+string problems[7] = {"","","","","","",""};
 
+    // Vehicle categories and types
+string categories[3] = {"Private / personal vehicles", "Public transport vehicles", "Commercial / heavy vehicles"};
+
+string privateVehicles[7] = {"Sedan", "Hatchback", "Pickup", "Van", "AUV", "MPV", "Motorcycle"};
+string publicVehicles[8] = {"Jeepney", "Modern Jeepney", "Tricycle", "E-Trike", "Taxi", "UV Express", "Shuttle Van", "Motorcycle"};
+string commercialVehicles[5] = {"Truck", "Delivery Van", "Bus", "Mini Bus", "Motorcycle"};
+
+string problemList[7] = {"Go back", "You're not sure what's the problem", "Engine & Powertrain", "Safety & Control Systems", "Electrical & Electronic Systems", "Fluids, Cooling & Exhaust", "Body & Interior"};
+
+    //Variables
 bool firstLogin = 1;
 //End for "GLOBAL"
 
@@ -31,6 +45,18 @@ void displayDates() {
     }
 }
 
+void displayReservations() {
+    cout << "Reservations:\n";
+    for (int i = 0; i < 7; i++) {
+        cout << dates[i] << ": ";
+        if (isBusy[i]) {
+            cout << "Reserved by " << customerNames[i] << " - " << vehicleTypes[i] << " - " << problems[i] << endl;
+        } else {
+            cout << "Available" << endl;
+        }
+    }
+}
+
 //CLI Title
 void header(string title) {
 
@@ -49,7 +75,140 @@ void mainMenuUI(){
 void ownerMenuUI(){
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
     cout << setw(26) <<"[2]  "<< "Set Working Days\n";
-    cout << setw(26) <<"[3]  "<< "View Available Dates\n";
+    cout << setw(26) <<"[3]  "<< "View Reservations\n";
+}
+
+void displayReservationSummary(int dateIndex) {
+    cout << "Name: " << customerNames[dateIndex] << endl;
+    cout << "Vehicle type: " << vehicleTypes[dateIndex] << endl;
+    cout << "Problem: " << problems[dateIndex] << endl;
+}
+
+void selectProblem(int dateIndex) {
+    int choice = 0;
+    bool selected = false;
+
+    while (!selected) {
+        system("clear");
+        header("SELECT PROBLEM");
+        displayReservationSummary(dateIndex);
+        cout << endl;
+
+        for (int i = 0; i < 7; i++) {
+            cout << "[" << i + 1 << "] " << problemList[i] << endl;
+        }
+
+        cout << "\nEnter choice: ";
+        if (!(cin >> choice)) {
+            clearInput();
+            system("clear");
+            cout << "Invalid input.\n";
+        } else if (choice < 1 || choice > 7) {
+            system("clear");
+            cout << "Invalid choice.\n";
+        } else if (choice == 1) {
+            // Go back to vehicle selection
+            return;
+        } else {
+            problems[dateIndex] = problemList[choice - 1];
+            selected = true;
+        }
+    }
+}
+
+bool selectVehicleType(int categoryIndex, int dateIndex) {
+    int choice = 0;
+    bool selected = false;
+    string* vehicleList;
+    int listSize;
+
+    if (categoryIndex == 0) {
+        vehicleList = privateVehicles;
+        listSize = 7;
+    } else if (categoryIndex == 1) {
+        vehicleList = publicVehicles;
+        listSize = 8;
+    } else {
+        vehicleList = commercialVehicles;
+        listSize = 5;
+    }
+
+    while (!selected) {
+        system("clear");
+        header("SELECT VEHICLE TYPE");
+        displayReservationSummary(dateIndex);
+        cout << endl;
+
+        cout << "[1] Go back" << endl;
+        for (int i = 0; i < listSize; i++) {
+            cout << "[" << i + 2 << "] " << vehicleList[i] << endl;
+        }
+
+        cout << "\nEnter choice: ";
+        if (!(cin >> choice)) {
+            clearInput();
+            system("clear");
+            cout << "Invalid input.\n";
+        } else if (choice < 1 || choice > listSize + 1) {
+            system("clear");
+            cout << "Invalid choice.\n";
+        } else if (choice == 1) {
+            // Go back to category selection
+            return false;
+        } else {
+            vehicleTypes[dateIndex] = vehicleList[choice - 2];
+            selected = true;
+            selectProblem(dateIndex);
+            return true;
+        }
+    }
+    return false;  // Should not reach here
+}
+
+void selectVehicleCategory(int dateIndex) {
+    int choice = 0;
+    bool selected = false;
+
+    while (!selected) {
+        system("clear");
+        header("SELECT VEHICLE CATEGORY");
+        displayReservationSummary(dateIndex);
+        cout << endl;
+
+        cout << "[1] Cancel Reservation" << endl;
+        for (int i = 0; i < 3; i++) {
+            cout << "[" << i + 2 << "] " << categories[i] << endl;
+        }
+
+        cout << "\nEnter choice: ";
+        if (!(cin >> choice)) {
+            clearInput();
+            system("clear");
+            cout << "Invalid input.\n";
+        } else if (choice < 1 || choice > 4) {
+            system("clear");
+            cout << "Invalid choice.\n";
+        } else if (choice == 1) {
+            // Cancel reservation
+            customerNames[dateIndex] = "";
+            vehicleTypes[dateIndex] = "";
+            problems[dateIndex] = "";
+            isBusy[dateIndex] = false;
+            return;
+        } else {
+            if (selectVehicleType(choice - 2, dateIndex)) {
+                selected = true;
+            }
+        }
+    }
+}
+
+void inputCustomerName(int dateIndex) {
+    system("clear");
+    header("CUSTOMER INFORMATION");
+    cout << "Enter your full name: ";
+    getline(cin, customerNames[dateIndex]);
+    selectVehicleCategory(dateIndex);
 }
 
 void makeReservation() {
@@ -104,6 +263,7 @@ void makeReservation() {
             cin.ignore();
             cin.get();
             reserved = true;
+            inputCustomerName(pick - 1);
         }
     }
 }
@@ -169,8 +329,8 @@ void ownerMenu() {
         }
 
         else if (choice == 3) {
-            cout << "\nViewing available dates...\n";
-            cout << "Enter 1 to return: ";
+            displayReservations();
+            cout << "\nEnter 1 to return: ";
             cin >> choice;
         }
     }
