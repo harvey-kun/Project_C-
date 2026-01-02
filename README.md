@@ -8,11 +8,11 @@ Enter customer information
 
 Select:
 
-Vehicle category (Private, Public Transport, Commercial)
+  Vehicle category (Private, Public Transport, Commercial)
 
-Specific vehicle type (e.g., Sedan, Jeepney, Truck)
+  Specific vehicle type (e.g., Sedan, Jeepney, Truck)
 
-Problem category (Engine, Electrical, Safety, etc.)
+  Problem category (Engine, Electrical, Safety, etc.)
 
 Prevents double-booking of dates
 
