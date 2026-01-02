@@ -10,11 +10,10 @@
      - Specific vehicle type (e.g., Sedan, Jeepney, Truck).
      - Problem category (Engine, Electrical, Safety, etc.).
 
- -Prevents double-booking of dates Select: 
- -Handles invalid input safely
- 
 
 
+   - Prevents double-booking of dates Select.
+   - Handles invalid input safely
 
 ## Owner Panel (Login Required)
 
