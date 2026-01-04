@@ -41,18 +41,26 @@
 # Demo 
 
 <table style="width:100%">
-   <center>
   <tr>
     <td>Main CLI:</td>
     <td>Customer CLI:</td>
   </tr>
   <tr>
     <td><img src="Screenshot/1.png"></td>
-    <td><img src="Screenshot/2.png"></td>
+    <td><img src="Screenshot/4.png"></td>
   </tr>
-  </center>
 </table>
 
+<table style="width:100%">
+  <tr>
+    <td>Customer Choice:</td>
+    <td>Owner CLI::</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshot/3.png"></td>
+    <td><img src="Screenshot/5.png"></td>
+  </tr>
+</table>
 
 # Note
 This project is intended for learning and academic purposes, No external files or databases are used, Any data that's saved within the program reset when the program exits.
