@@ -39,13 +39,13 @@
 
 
 # Demo 
-
+<div>
 <p>Main CLI</p>
 <img src="Screenshot/1.png" alt="Nothing" width="35%" length="35%">
 
-Customer CLI
+<p>Customer CLI</p>
 <img src="Screenshot/2.png" alt="Nothing" width="35%" length="35%">
-
+</div>
 
 
 # Note
