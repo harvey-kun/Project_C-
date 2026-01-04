@@ -41,6 +41,7 @@
 # Demo 
 
 <table style="width:100%">
+   <center>
   <tr>
     <td>Main CLI:</td>
     <td>Customer CLI:</td>
@@ -49,6 +50,7 @@
     <td><img src="Screenshot/1.png" alt="Nothing" width="35%" length="35%"></td>
     <td><img src="Screenshot/2.png" alt="Nothing" width="35%" length="35%"></td>
   </tr>
+  </center>
 </table>
 
 
