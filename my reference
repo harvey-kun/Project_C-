@@ -131,7 +131,7 @@ void changeProblem(int dateIndex) {
             selected = true;
             cout << "Problem updated successfully.\n";
             cout << "Press enter to continue...";
-            cin.ignore();
+            clearInput();
             cin.get();
         }
     }
@@ -152,7 +152,7 @@ void setWorkDuration(int dateIndex) {
     }
     cout << "Work duration set. Next " << days << " days marked as busy.\n";
     cout << "Press enter to continue...";
-    cin.ignore();
+    clearInput();
     cin.get();
 }
 
@@ -187,7 +187,7 @@ void manageReservation(int dateIndex) {
             isBusy[dateIndex] = false;
             cout << "Reservation marked as completed.\n";
             cout << "Press enter to continue...";
-            cin.ignore();
+            clearInput();
             cin.get();
         } else if (choice == 4 && !customerNames[dateIndex].empty() && !vehicleTypes[dateIndex].empty() && !problems[dateIndex].empty()) {
             setWorkDuration(dateIndex);
@@ -362,7 +362,7 @@ void makeReservation() {
         displayDates();
         cout << "\nThe week schedule is full. Try again next week.\n";
         cout << "Press enter to continue...";
-        cin.ignore();
+        clearInput();
         cin.get();
         return;  // Exit the function
     }
@@ -375,8 +375,6 @@ void makeReservation() {
         cout << "\nPick a date: ";
         if (!(cin >> pick)) {
             clearInput();
-            system("clear");
-            cout << "Invalid input.\n";
         } else if (pick < 1 || pick > 7) {
             system("clear");
             cout << "Invalid choice.\n";
@@ -384,17 +382,10 @@ void makeReservation() {
             system("clear");
             header("MAKE RESERVATION");
             displayDates();
-            cout << "\n" << dates[pick - 1]
-                 << " is not available please select another date.\n";
         } else {
             // Reserve date
             isBusy[pick - 1] = true;
-
-            cout << "\nReservation successful!\n";
-            cout << "Scheduled on: " << dates[pick - 1] << endl;
-            cout << "Press enter to continue...";
-            cin.ignore();
-            cin.get();
+            clearInput();
             reserved = true;
             inputCustomerName(pick - 1);
         }
@@ -433,7 +424,7 @@ bool ownerLogin(){
 
     cout << "\nInvalid username or password.\n";
     cout << "Press enter to return...";
-    cin.ignore();
+    clearInput();
     cin.get();
     return false;
 }
