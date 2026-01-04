@@ -39,13 +39,17 @@
 
 
 # Demo 
-<div>
-<p>Main CLI</p>
-<img src="Screenshot/1.png" alt="Nothing" width="35%" length="35%">
 
-<p>Customer CLI</p>
-<img src="Screenshot/2.png" alt="Nothing" width="35%" length="35%">
-</div>
+<table style="width:100%">
+  <tr>
+    <td>Main CLI:</td>
+    <td>Customer CLI:</td>
+  </tr>
+  <tr>
+    <td><img src="Screenshot/1.png" alt="Nothing" width="35%" length="35%"></td>
+    <td><img src="Screenshot/2.png" alt="Nothing" width="35%" length="35%"></td>
+  </tr>
+</table>
 
 
 # Note
