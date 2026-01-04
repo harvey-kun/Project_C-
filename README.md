@@ -38,8 +38,13 @@
  - Input validation to prevent infinite loops and crashes.
 
 
-## Demo 
+# Demo 
+Main CLI
 ![](Screenshot/1.png)
+
+Customer CLI
+<img src="Screenshot/2.png" alt="Nothing" width="500" length="500">
+
 
 
 # Note
