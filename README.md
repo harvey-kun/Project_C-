@@ -43,7 +43,7 @@ Main CLI
 ![](Screenshot/1.png)
 
 Customer CLI
-<img src="Screenshot/2.png" alt="Nothing" width="50%" length="50%">
+<img src="Screenshot/2.png" alt="Nothing" width="20%" length="20%">
 
 
 
