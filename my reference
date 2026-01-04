@@ -252,19 +252,6 @@ void selectProblem(int dateIndex) {
 bool selectVehicleType(int categoryIndex, int dateIndex) {
     int choice = 0;
     bool selected = false;
-    string* vehicleList;
-    int listSize;
-
-    if (categoryIndex == 0) {
-        vehicleList = privateVehicles;
-        listSize = 7;
-    } else if (categoryIndex == 1) {
-        vehicleList = publicVehicles;
-        listSize = 8;
-    } else {
-        vehicleList = commercialVehicles;
-        listSize = 5;
-    }
 
     while (!selected) {
         system("clear");
@@ -273,8 +260,18 @@ bool selectVehicleType(int categoryIndex, int dateIndex) {
         cout << endl;
 
         cout << "[1] Go back" << endl;
-        for (int i = 0; i < listSize; i++) {
-            cout << "[" << i + 2 << "] " << vehicleList[i] << endl;
+        if (categoryIndex == 0) {
+            for (int i = 0; i < 7; i++) {
+                cout << "[" << i + 2 << "] " << privateVehicles[i] << endl;
+            }
+        } else if (categoryIndex == 1) {
+            for (int i = 0; i < 8; i++) {
+                cout << "[" << i + 2 << "] " << publicVehicles[i] << endl;
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                cout << "[" << i + 2 << "] " << commercialVehicles[i] << endl;
+            }
         }
 
         cout << "\nEnter choice: ";
@@ -282,14 +279,20 @@ bool selectVehicleType(int categoryIndex, int dateIndex) {
             clearInput();
             system("clear");
             cout << "Invalid input.\n";
-        } else if (choice < 1 || choice > listSize + 1) {
+        } else if (choice < 1 || (categoryIndex == 0 && choice > 8) || (categoryIndex == 1 && choice > 9) || (categoryIndex == 2 && choice > 6)) {
             system("clear");
             cout << "Invalid choice.\n";
         } else if (choice == 1) {
             // Go back to category selection
             return false;
         } else {
-            vehicleTypes[dateIndex] = vehicleList[choice - 2];
+            if (categoryIndex == 0) {
+                vehicleTypes[dateIndex] = privateVehicles[choice - 2];
+            } else if (categoryIndex == 1) {
+                vehicleTypes[dateIndex] = publicVehicles[choice - 2];
+            } else {
+                vehicleTypes[dateIndex] = commercialVehicles[choice - 2];
+            }
             selected = true;
             selectProblem(dateIndex);
             return true;
@@ -486,9 +489,7 @@ void customerMenu() {
 }
 
 
-
-
-//Main---------------------------------------------------------------------------------------------------------
+//Main
 int main() {
     int choice = 0;
 
