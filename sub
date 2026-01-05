@@ -27,14 +27,68 @@ string problemList[7] = {"Go back", "You're not sure what's the problem", "Engin
 bool firstLogin = 1;
 //End for "GLOBAL"
 
+// Function declarations
+void clearInput();
+void header(string title);
+void displayDates();
+int displayReservations();
+void displayReservationDetails(int dateIndex);
+void changeProblem(int dateIndex);
+void setWorkDuration(int dateIndex);
+void manageReservation(int dateIndex);
+void mainMenuUI();
+void ownerMenuUI();
+void displayReservationSummary(int dateIndex);
+void selectProblem(int dateIndex);
+bool selectVehicleType(int categoryIndex, int dateIndex);
+void selectVehicleCategory(int dateIndex);
+void inputCustomerName(int dateIndex);
+void makeReservation();
+void customerMenuUI();
+bool ownerLogin();
+void ownerMenu();
+void customerMenu();
 
-//For input errors
-void clearInput(){
+int main() {
+    int choice = 0;
+
+    while (choice != 3){
+        system("clear");
+        header("VEHICLE SERVICE RESERVATION SYSTEM");
+        mainMenuUI();
+
+        cout << "\nEnter choice: ";
+
+        //for invalid user input
+        if (!(cin >> choice)){
+            clearInput();
+            choice = 0;
+        }
+
+        if(choice == 1){
+            customerMenu();
+        }
+        else if (choice == 2){
+            if (ownerLogin()){
+                ownerMenu();
+            }
+        }
+        else if (choice == 3){
+            system("clear");
+            header("VEHICLE SERVICE RESERVATION SYSTEM");
+            cout << "Ending Program...\n";
+        }
+    }
+
+    return 0;
+}
+
+
+void clearInput() {
     cin.clear();
     cin.ignore(10000, '\n');
 }
 
-//CLI Title
 void header(string title) {
     cout << "============================================================\n";
     cout << setw(47) << title << endl;
@@ -198,14 +252,13 @@ void manageReservation(int dateIndex) {
     }
 }
 
-//CLI Sub choices 1
-void mainMenuUI(){
+void mainMenuUI() {
     cout << setw(26) <<"[1]  "<< "Customer\n";
     cout << setw(26) <<"[2]  "<< "Owner\n";
     cout << setw(26) <<"[3]  "<< "Exit\n";
 }
-//CLI Sub choices 2
-void ownerMenuUI(){
+
+void ownerMenuUI() {
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
     cout << setw(26) <<"[2]  "<< "Set Working Days\n";
     cout << setw(26) <<"[3]  "<< "View Reservations\n";
@@ -395,15 +448,12 @@ void makeReservation() {
     }
 }
 
-
-//CLI Sub choices 3
 void customerMenuUI() {
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
     cout << setw(26) <<"[2]  "<< "Make Reservation\n";
 }
 
-//Owner CLI
-bool ownerLogin(){
+bool ownerLogin() {
     string user, pass;
 
     system("clear");
@@ -431,7 +481,6 @@ bool ownerLogin(){
     cin.get();
     return false;
 }
-
 
 void ownerMenu() {
     int choice = 0;
@@ -464,8 +513,6 @@ void ownerMenu() {
     }
 }
 
-
-//Customer CLI
 void customerMenu() {
     int choice = 0;
 
@@ -486,40 +533,4 @@ void customerMenu() {
             choice = 0; // stay in customer menu
         }
     }
-}
-
-
-//Main
-int main() {
-    int choice = 0;
-
-    while (choice != 3){
-        system("clear");
-        header("VEHICLE SERVICE RESERVATION SYSTEM");
-        mainMenuUI();
-
-        cout << "\nEnter choice: ";
-
-        //for invalid user input
-        if (!(cin >> choice)){
-            clearInput();
-            choice = 0;
-        }
-
-        if(choice == 1){
-            customerMenu();
-        }
-        else if (choice == 2){
-            if (ownerLogin()){
-                ownerMenu();
-            }
-        }
-        else if (choice == 3){
-            system("clear");
-            header("VEHICLE SERVICE RESERVATION SYSTEM");
-            cout << "Ending Program...\n";
-        }
-    }
-
-    return 0;
 }
