@@ -83,7 +83,6 @@ int main() {
     return 0;
 }
 
-
 void clearInput() {
     cin.clear();
     cin.ignore(10000, '\n');
