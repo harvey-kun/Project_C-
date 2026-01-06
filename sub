@@ -48,6 +48,7 @@ void customerMenuUI();
 bool ownerLogin();
 void ownerMenu();
 void customerMenu();
+void changeCredentials();
 
 int main() {
     int choice = 0;
@@ -259,7 +260,7 @@ void mainMenuUI() {
 
 void ownerMenuUI() {
     cout << setw(26) <<"[1]  "<< "Return to Main Menu\n";
-    cout << setw(26) <<"[2]  "<< "Set Working Days\n";
+    cout << setw(26) <<"[2]  "<< "Change username and password\n";
     cout << setw(26) <<"[3]  "<< "View Reservations\n";
 }
 
@@ -481,6 +482,74 @@ bool ownerLogin() {
     return false;
 }
 
+void changeCredentials() {
+    int choice = 0;
+    string newUser, newPass;
+
+    while (choice != 1) {
+        system("clear");
+        header("CHANGE CREDENTIALS");
+        cout << "Current Account:\n";
+        cout << "Username: " << ownerCreds[0] << endl;
+        cout << "Password: " << ownerCreds[1] << endl << endl;
+
+        cout << "[1] Go back\n";
+        cout << "[2] Change Username and Password\n";
+
+        cout << "\nEnter choice: ";
+        if (!(cin >> choice)) {
+            clearInput();
+            choice = 0;
+        } else if (choice == 1) {
+            // Go back
+        } else if (choice == 2) {
+            system("clear");
+            header("CHANGING ACCOUNT");
+            cout << "Username: ";
+            cin >> newUser;
+            cout << "Password: ";
+            cin >> newPass;
+
+            system("clear");
+            header("ACCOUNT VERIFICATION");
+            cout << "Username: " << newUser << endl;
+            cout << "Password: " << newPass << endl << endl;
+
+            cout << "Confirm Changes?\n";
+            cout << "[1] No\n";
+            cout << "[2] Yes\n";
+
+            cout << "\nEnter choice: ";
+            int confirm;
+            if (!(cin >> confirm)) {
+                clearInput();
+                confirm = 0;
+            }
+            if (confirm == 2) {
+                ownerCreds[0] = newUser;
+                ownerCreds[1] = newPass;
+                cout << "Credentials updated successfully.\n";
+                cout << "Press enter to continue...";
+                clearInput();
+                cin.get();
+            } else if (confirm == 1) {
+                cout << "Changes cancelled.\n";
+                cout << "Press enter to continue...";
+                clearInput();
+                cin.get();
+            } else {
+                cout << "Invalid choice. Changes cancelled.\n";
+                cout << "Press enter to continue...";
+                clearInput();
+                cin.get();
+            }
+        } else {
+            system("clear");
+            cout << "Invalid choice.\n";
+        }
+    }
+}
+
 void ownerMenu() {
     int choice = 0;
 
@@ -498,9 +567,7 @@ void ownerMenu() {
         }
 
          else if (choice == 2) {
-            cout << "\nSetting working days...\n";
-            cout << "Enter 1 to return: ";
-            cin >> choice;
+            changeCredentials();  // Call the new function
         }
 
         else if (choice == 3) {
