@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+//Just decleration
+void ptxt(string txt, int margin, bool ishead);
+void justprintline();
+
+int main(){
+ptxt("test",10, true);
+return 0;
+}
+
+//Void body
+void justprintline(){
+ cout << "====================\n";
+}
+
+void ptxt(string txt, int margin, bool ishead){
+ if(ishead == false){
+    cout << setw(margin) << txt <<endl;
+ } else{
+    justprintline();
+    cout << setw(margin) << txt <<endl;
+    justprintline();
+ }
+}
