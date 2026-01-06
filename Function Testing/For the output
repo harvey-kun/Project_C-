@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+void println();
+void printxt(int margin,string text);
+void container(int margin,string text);
+
+int main(){
+    int a;
+    string b;
+
+    container(25,"Lorem Ipsum");
+    cout << "Enter margin(Must be number):"; cin >> a;
+    cout << "Enter Text: "; cin >> b;
+    println();
+    printxt(a,b);
+    return 0;
+}
+
+void container(int margin, string text){
+    println();
+    printxt(margin,text);
+    println();
+}
+
+void println(){
+    cout << "========================================\n";
+}
+
+void printxt(int margin, string text){
+    cout << setw(margin) << text << "\n";
+}
