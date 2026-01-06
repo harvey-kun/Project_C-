@@ -4,11 +4,11 @@
 using namespace std;
 
 //Just decleration
-void ptxt(string txt, int margin, bool ishead);
+void siawt(string txt, int margin, bool ishead);
 void justprintline();
 
 int main(){
-ptxt("test",10, true);
+siawt("test",10, true);
 return 0;
 }
 
@@ -17,7 +17,7 @@ void justprintline(){
  cout << "====================\n";
 }
 
-void ptxt(string txt, int margin, bool ishead){
+void siawt(string txt, int margin, bool ishead){
  if(ishead == false){
     cout << setw(margin) << txt <<endl;
  } else{
@@ -26,3 +26,4 @@ void ptxt(string txt, int margin, bool ishead){
     justprintline();
  }
 }
+
